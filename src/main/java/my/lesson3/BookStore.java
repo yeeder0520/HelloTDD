@@ -11,15 +11,23 @@ public class BookStore {
 
     public double sellBook(String... bookNames) {
         long differenceBookCount = Arrays.stream(bookNames).distinct().count();
+
         if (differenceBookCount >= 5) {
             differenceBookCount = 5;
         }
-        long notDiscountBookCount = bookNames.length - differenceBookCount;
-        double discount = discountHandler(differenceBookCount) * differenceBookCount * 100;
-        double notDiscount = notDiscountBookCount * 100;
-        return discount + notDiscount;
+
+        double totalDiscountBookPrice = discountHandler(differenceBookCount) * differenceBookCount * 100;
+        double totalNotDiscountBookPrice = (bookNames.length - differenceBookCount) * 100;
+
+        return totalDiscountBookPrice + totalNotDiscountBookPrice;
     }
 
+    /**
+     * 根據買幾本不同的書，取出對應的折扣
+     *
+     * @param differenceBookCount 有幾本不同的書
+     * @return 折扣數
+     */
     private static double discountHandler(long differenceBookCount) {
         if (differenceBookCount == 2) {
             return 0.95;
