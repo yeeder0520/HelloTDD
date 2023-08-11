@@ -3,7 +3,6 @@ package my.lesson3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -22,6 +21,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 7.買六本不同的書，價格是475 => ok
  * 8.買七本不同的書，價格是575 => ok
  * 9.買兩本一樣的書 + 一本不一樣的書，價格是290
+ * 全部都買一樣(共n本)
+ * 全部都不一樣(共7本)
+ * 買了2本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是90。
+ * 買了3本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是70。
+ * 買了4本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是20。
+ * 買了5本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是75。
  *
  * @author YeeDer
  * @since 2023/8/11 PM 03:54
@@ -179,7 +184,6 @@ public class BookStoreTest {
 
 
     /**
-     *
      * 隨機買書
      *
      * @return 書名
