@@ -1,6 +1,6 @@
 package my.lesson1;
 
-import lesson1.Calculator;
+import my.lesson3.lesson1.Calculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
