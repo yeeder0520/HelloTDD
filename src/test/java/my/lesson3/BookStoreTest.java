@@ -1,11 +1,10 @@
 package my.lesson3;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,15 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 4.買三本不同的書，價格是270 => ok
  * 5.買四本不同的書，價格是320 => ok
  * 6.買五本不同的書，價格是375 => ok
- * 7.買六本不同的書，價格是475 => ok
- * 8.買七本不同的書，價格是575 => ok
+ * 7.買1+5本不同的書，價格是100+375 => ok
+ * 8.買2+5本不同的書，價格是575 => ok
  * 9.買兩本一樣的書 + 一本不一樣的書，價格是290
- * 全部都買一樣(共n本)
- * 全部都不一樣(共7本)
- * 買了2本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是90。
- * 買了3本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是70。
- * 買了4本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是20。
- * 買了5本不同的書，又買了N本書(不管一樣或不一樣)，價格除100的餘數一定是75。
  *
  * @author YeeDer
  * @since 2023/8/11 PM 03:54
@@ -43,10 +36,7 @@ public class BookStoreTest {
                 "哈利波特-消失的密室",
                 "哈利波特-阿茲卡班的逃犯",
                 "哈利波特-火盃的考驗",
-                "哈利波特-鳳凰會的密令",
-                "哈利波特-混血王子的背叛",
-                "哈利波特-死神的聖物I",
-                "哈利波特-死神的聖物II"
+                "哈利波特-鳳凰會的密令"
         );
     }
 
@@ -197,5 +187,88 @@ public class BookStoreTest {
 
         return harryPorterBooks.get(random.nextInt(8));
     }
+
+    @Test
+    void test_find_buy_3_books_when_discount_group_123_is_3() {
+        //Given
+        BookStore bookStore = new BookStore();
+        String book1 = "哈利波特-神秘的魔法石";
+        String book2 = "哈利波特-消失的密室";
+        String book3 = "哈利波特-阿茲卡班的逃犯";
+        List<Map<Object, Long>> list = new ArrayList<>();
+        Map<Object, Long> map1 = new HashMap<>();
+        map1.put(3L, 1L);
+        Map<Object, Long> map2 = new HashMap<>();
+        map2.put(1L, 3L);
+        Map<Object, Long> map3 = new HashMap<>();
+        map3.put(2L, 1L);
+        map3.put(1L, 1L);
+
+        //When
+        List discountGroup = bookStore.discountGroup(book1, book2, book3);
+
+        //Then
+        assertThat(discountGroup)
+                .hasSize(3)
+                .contains(map1, map2);
+
+    }
+
+    @Test
+    void test_find_buy_3_books_when_discount_group_112_is_3() {
+        //Given
+        BookStore bookStore = new BookStore();
+        String book1 = "哈利波特-神秘的魔法石";
+        String book2 = "哈利波特-消失的密室";
+        String book3 = "哈利波特-消失的密室";
+
+        Map<Object, Long> map1 = new HashMap<>();
+        map1.put(2L, 1L);
+        map1.put(1L, 1L);
+        Map<Object, Long> map2 = new HashMap<>();
+        map2.put(1L, 3L);
+
+        //When
+        List discountGroup = bookStore.discountGroup(book1, book2, book3);
+        System.out.println(discountGroup);
+        //Then
+        assertThat(discountGroup)
+                .hasSize(3)
+                .contains(map1, map2);
+
+    }
+
+    @Test
+    @Disabled
+    void test_find_buy_3_books_when_discount_group_is_2() {
+        //Given
+        BookStore bookStore = new BookStore();
+        String book1 = "哈利波特-神秘的魔法石";
+        String book2 = "哈利波特-消失的密室";
+        String book3 = "哈利波特-消失的密室";
+
+        //When
+        long discountGroup = bookStore.discountGroup2(book1, book2, book3);
+
+        //Then
+        assertThat(discountGroup).isEqualTo(2);
+    }
+
+    @Test
+    @Disabled
+    void test_new() {
+        //Given
+        BookStore bookStore = new BookStore();
+        String book1 = "哈利波特-A";
+        String book2 = "哈利波特-A";
+        String book3 = "哈利波特-C";
+
+        //When
+        long discountGroup = bookStore.discountGroup2(book1, book2, book3);
+
+        //Then
+        assertThat(discountGroup).isEqualTo(3);
+    }
+
 
 }
