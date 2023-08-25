@@ -1,7 +1,6 @@
 package my.lesson3;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -31,13 +30,11 @@ public class BookStoreTest {
 
     @BeforeEach
     void init() {
-        harryPorterBooks = Arrays.asList(
-                "哈利波特-神秘的魔法石",
-                "哈利波特-消失的密室",
-                "哈利波特-阿茲卡班的逃犯",
-                "哈利波特-火盃的考驗",
-                "哈利波特-鳳凰會的密令"
-        );
+        harryPorterBooks = Arrays.asList("哈利波特-神秘的魔法石",
+                                         "哈利波特-消失的密室",
+                                         "哈利波特-阿茲卡班的逃犯",
+                                         "哈利波特-火盃的考驗",
+                                         "哈利波特-鳳凰會的密令");
     }
 
     @Test
@@ -208,9 +205,7 @@ public class BookStoreTest {
         List discountGroup = bookStore.discountGroup(book1, book2, book3);
 
         //Then
-        assertThat(discountGroup)
-                .hasSize(3)
-                .contains(map1, map2);
+        assertThat(discountGroup).hasSize(3).contains(map1, map2);
 
     }
 
@@ -232,43 +227,7 @@ public class BookStoreTest {
         List discountGroup = bookStore.discountGroup(book1, book2, book3);
         System.out.println(discountGroup);
         //Then
-        assertThat(discountGroup)
-                .hasSize(3)
-                .contains(map1, map2);
+        assertThat(discountGroup).hasSize(3).contains(map1, map2);
 
     }
-
-    @Test
-    @Disabled
-    void test_find_buy_3_books_when_discount_group_is_2() {
-        //Given
-        BookStore bookStore = new BookStore();
-        String book1 = "哈利波特-神秘的魔法石";
-        String book2 = "哈利波特-消失的密室";
-        String book3 = "哈利波特-消失的密室";
-
-        //When
-        long discountGroup = bookStore.discountGroup2(book1, book2, book3);
-
-        //Then
-        assertThat(discountGroup).isEqualTo(2);
-    }
-
-    @Test
-    @Disabled
-    void test_new() {
-        //Given
-        BookStore bookStore = new BookStore();
-        String book1 = "哈利波特-A";
-        String book2 = "哈利波特-A";
-        String book3 = "哈利波特-C";
-
-        //When
-        long discountGroup = bookStore.discountGroup2(book1, book2, book3);
-
-        //Then
-        assertThat(discountGroup).isEqualTo(3);
-    }
-
-
 }
