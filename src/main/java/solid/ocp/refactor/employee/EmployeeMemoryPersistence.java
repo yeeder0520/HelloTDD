@@ -1,6 +1,5 @@
 package solid.ocp.refactor.employee;
 
-import com.tv.training.solid.ocp.sample.Programmer;
 
 import java.util.ArrayList;
 import java.util.List;

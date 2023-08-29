@@ -1,4 +1,4 @@
-package my.lesson3.lesson1;
+package my.lesson1;
 
 /**
  * @author YeeDer

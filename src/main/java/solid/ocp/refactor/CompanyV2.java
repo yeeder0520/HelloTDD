@@ -1,8 +1,7 @@
 package solid.ocp.refactor;
 
-import com.tv.training.solid.ocp.refactor.employee.EmployeeMemoryPersistence;
-import com.tv.training.solid.ocp.refactor.employee.EmployeeV2;
-import com.tv.training.solid.ocp.refactor.employee.HumanResourceV2;
+import solid.ocp.refactor.employee.EmployeeMemoryPersistence;
+import solid.ocp.refactor.employee.EmployeeV2;
 
 import java.util.List;
 

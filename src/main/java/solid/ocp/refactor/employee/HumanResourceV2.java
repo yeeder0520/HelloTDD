@@ -1,9 +1,5 @@
 package solid.ocp.refactor.employee;
 
-import com.tv.training.solid.ocp.refactor.employee.EmployeeV2;
-import com.tv.training.solid.ocp.sample.Programmer;
-
-import java.util.List;
 
 /**
  * @author YeeDer

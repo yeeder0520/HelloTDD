@@ -1,7 +1,8 @@
 package solid.dip.sample;
 
-import com.tv.training.solid.dip.sample.persistence.EmployeeMemoryPersistence;
-import com.tv.training.solid.dip.sample.persistence.EmployeePersistence;
+
+import solid.dip.sample.persistence.EmployeeMemoryPersistence;
+import solid.dip.sample.persistence.EmployeePersistence;
 
 import java.util.List;
 

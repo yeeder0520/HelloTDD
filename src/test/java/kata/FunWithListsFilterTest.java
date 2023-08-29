@@ -1,6 +1,10 @@
 package kata;
 
+import kata.FunWithListsFilter.Node;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.function.Predicate;
 
 /**
  * <a href="https://www.codewars.com/kata/582041237df353e01d000084/train/java">原文網址</a>
@@ -12,18 +16,23 @@ public class FunWithListsFilterTest {
 
     @Test
     public void basicTests() {
-        FunWithListsFilter.testFilter(null, x -> false, null);
-        FunWithListsFilter.testFilter(new FunWithListsFilter.Node<>(1,
-                                                                    new FunWithListsFilter.Node<>(2,
-                                                                                                  new FunWithListsFilter.Node<>(
-                                                                                                          3))),
-                                      x -> true,
-                                      new FunWithListsFilter.Node<>(1,
-                                                                    new FunWithListsFilter.Node<>(2,
-                                                                                                  new FunWithListsFilter.Node<>(
-                                                                                                          3))));
+        Assertions.assertNull(FunWithListsFilter.filter(null, __ -> false));
+        Assertions.assertEquals( new Node<>(1, new Node<>(2, new Node<>(3))).data,FunWithListsFilter.filter(new Node<>(1, new Node<>(2, new Node<>(3))), x -> true).data);
     }
 
+    @Test
+    public void arrayOfInts() {
+        Assertions.assertEquals(new Node<>(1).data,FunWithListsFilter.filter(new Node<>(1, new Node<>(2, new Node<>(3))), x -> x == 1).data);
+        Assertions.assertEquals(new Node<>(1, new Node<>(2)).data,FunWithListsFilter.filter(new Node<>(1, new Node<>(2, new Node<>(3))), x -> x <= 2).data);
+    }
+
+
+    @Test
+    public void predicateTest() {
+        Predicate<Integer> predicate2 = num -> num % 2 == 0;
+        System.out.println(predicate2.test(3));
+        System.out.println(predicate2.test(4));
+    }
 
     @Test
     public void test(){

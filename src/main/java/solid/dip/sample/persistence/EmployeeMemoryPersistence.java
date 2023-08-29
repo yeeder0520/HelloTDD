@@ -1,6 +1,7 @@
 package solid.dip.sample.persistence;
 
-import com.tv.training.solid.dip.sample.Employee;
+
+import solid.dip.sample.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,16 +10,30 @@ import java.util.function.Predicate;
  **/
 public class FunWithListsFilter {
 
+    public static <T> Node<T> filter(Node<T> inputNode, Predicate<T> predicate) {
+        Node<T> newHead = null;
+        Node<T> tail = null;
 
-    static <T> Node testFilter(Node input_list_head, Predicate<T> predicate, Node expected_list_head) {
-        return null;
+        while (inputNode != null) {
+            if (predicate.test(inputNode.data)) {
+                Node<T> newNode = new Node<>(inputNode.data);
+                if (newHead == null) {
+                    newHead = newNode;
+                } else {
+                    tail.next = newNode;
+                }
+                tail = newNode;
+            }
+            inputNode = inputNode.next;
+        }
+        return newHead;
     }
 
     static class Node<T> {
         public T data;
         public Node<T> next;
 
-        Node(T data, Node next) {
+        Node(T data, Node<T> next) {
             this.data = data;
             this.next = next;
         }
@@ -28,5 +42,4 @@ public class FunWithListsFilter {
             this(data, null);
         }
     }
-
 }

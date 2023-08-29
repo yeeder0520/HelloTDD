@@ -1,6 +1,6 @@
 package solid.dip.refactor.persistence;
 
-import com.tv.training.solid.dip.refactor.Employee;
+import solid.dip.refactor.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

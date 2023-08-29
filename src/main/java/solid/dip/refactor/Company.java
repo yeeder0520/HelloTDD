@@ -1,6 +1,7 @@
 package solid.dip.refactor;
 
-import com.tv.training.solid.dip.refactor.persistence.Persistence;
+
+import solid.dip.refactor.persistence.Persistence;
 
 import java.util.List;
 
