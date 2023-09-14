@@ -19,4 +19,9 @@ public class PigLatin {
             return word;
         }).collect(Collectors.joining(" "));
     }
+
+//    我最喜歡的解法
+//    public static String pigIt(String str) {
+//        return str.replaceAll("(\\w)(\\w*)", "$2$1ay");
+//    }
 }
