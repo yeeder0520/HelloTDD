@@ -9,7 +9,7 @@ public class IsSatorSquareTest {
 
   IsSatorSquare isSatorSquare = new IsSatorSquare();
 
-  char[][][] sampleTablets = {
+  char[][][] passTablets = {
       new char[][]
           {
               {'T', 'E', 'N'},
@@ -23,6 +23,17 @@ public class IsSatorSquareTest {
               {'T', 'O', 'R', 'O', 'T'},
               {'O', 'R', 'O', 'T', 'O'},
               {'R', 'O', 'T', 'O', 'R'}
+          }
+  };
+
+  char[][][] errorTablets = {
+      new char[][]
+          {
+              {'R', 'O', 'T', 'O', 'R'},
+              {'O', 'T', 'O', 'R', 'O'},
+              {'T', 'O', 'R', 'O', 'T'},
+              {'O', 'R', 'O', 'T', 'O'},
+              {'X', 'O', 'T', 'O', 'R'}
           },
       new char[][]
           {
@@ -30,26 +41,29 @@ public class IsSatorSquareTest {
               {'O', 'V', 'O'},
               {'N', 'O', 'T'}
           },
-      new char[][]
-          {
-              {'S', 'A', 'T', 'O', 'R'},
-              {'A', 'R', 'E', 'P', 'O'},
-              {'T', 'E', 'N', 'E', 'T'},
-              {'O', 'P', 'E', 'R', 'A'},
-              {'X', 'X', 'X', 'X', 'X'}
-          }
+
   };
 
   @Test
   void test_is_sator_square() {
     AtomicInteger index = new AtomicInteger();
-    for (char[][] sampleTablet : sampleTablets) {
+    for (char[][] sampleTablet : passTablets) {
       index.getAndIncrement();
       System.out.println("Test " + index);
       boolean actual = isSatorSquare.isSatorSquare(sampleTablet);
       assertThat(actual).isTrue();
     }
+  }
 
+  @Test
+  void test_is_not_sator_square() {
+    AtomicInteger index = new AtomicInteger();
+    for (char[][] sampleTablet : errorTablets) {
+      index.getAndIncrement();
+      System.out.println("Test " + index);
+      boolean actual = isSatorSquare.isSatorSquare(sampleTablet);
+      assertThat(actual).isFalse();
+    }
   }
 
 }
