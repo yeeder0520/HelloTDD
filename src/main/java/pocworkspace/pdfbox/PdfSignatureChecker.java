@@ -10,7 +10,7 @@ import org.apache.pdfbox.pdmodel.interactive.digitalsignature.PDSignature;
 public class PdfSignatureChecker {
 
   public static void main(String[] args) {
-    String filePath = "src/test/resources/pdf/金鼎文具收貨確認表_2個簽.pdf";
+    String filePath = "src/test/resources/pdf/金鼎文具收貨確認表_1個簽.pdf";
 
     try {
       // 读取PDF文件

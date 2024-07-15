@@ -20,7 +20,7 @@ public class PdfBoxEditor {
   private static final Log log = LogFactory.getLog(PdfBoxEditor.class);
 
   public static void main(String[] args) {
-    String src = "src/test/resources/pdf/超級大火雞.pdf"; // 替換為你的 PDF 檔案路徑
+    String src = "src/test/resources/pdf/ABC.pdf"; // 替換為你的 PDF 檔案路徑
     String dest = "src/test/resources/pdf/output.pdf";
     String text = "超級老鷹";
     // 替換為圖片的路徑
@@ -54,7 +54,7 @@ public class PdfBoxEditor {
                                                                        firstPage,
                                                                        AppendMode.APPEND,
                                                                        true)) {
-        String fontPath = "src/test/resources/NotoSansTC-VariableFont_wght.ttf"; // 字體文件路徑
+        String fontPath = "src/test/resources/pdf/NotoSansTC-VariableFont_wght.ttf"; // 字體文件路徑
         PDType0Font load = PDType0Font.load(document, new File(fontPath));
         contentStream.beginText();
         contentStream.setFont(load, 50);

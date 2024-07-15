@@ -81,7 +81,11 @@ public class PdfSigner {
     }
 
     PDSignatureField signatureField = new PDSignatureField(acroForm);
-    signatureField.setPartialName("AJIOFAOAFJIOM");
+    document.getDocumentCatalog().getAcroForm().getFields().forEach(field -> {
+      System.out.println("簽名欄位: " + field.getFullyQualifiedName());
+      signatureField.setPartialName(field.getFullyQualifiedName());
+    });
+
     acroForm.getFields()
         .add(signatureField);
 
